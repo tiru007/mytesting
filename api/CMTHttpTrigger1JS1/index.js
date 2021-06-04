@@ -9,6 +9,7 @@ module.exports = async function (context, req) {
         if (name) {
             context.bindings.outputDocument = JSON.stringify({
                 // create a random ID
+                id1: uuid(), 
                 id: new Date().toISOString() + Math.random().toString().substr(2,8),
                 name: name
             });
