@@ -6,10 +6,18 @@ module.exports = async function (context, req) {
         ? "Hello, " + name + ". This HTTP triggered function executed successfully."
         : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
 
+        function func() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace( /[xy]/g , function(c) {
+            var rnd = Math.random()*16 |0, v = c === 'x' ? rnd : (rnd&0x3|0x8) ;
+            return v.toString(16);
+            });
+            }
+
         if (name) {
             context.bindings.outputDocument = JSON.stringify({
                 // create a random ID
-                id: new Date().toISOString() + Math.random().toString().substr(2,8),
+               // id: new Date().toISOString() + Math.random().toString().substr(2,8),
+               id: new func(),
                 name: name
             });
         }
